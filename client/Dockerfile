@@ -6,13 +6,13 @@ RUN mkdir -p /srv/app/admin-client
 WORKDIR /srv/app/admin-client
 
 # Copy the package.json files to the working directory
-COPY package*.json ./
+COPY package*.json /srv/app/admin-client
 
 # Install the application dependencies
 RUN npm install --silent
 
 # Copy the remaining application files to the working directory
-COPY . .
+COPY . /srv/app/admin-client
 
 # Command to run the app when the container starts
 CMD ["npm", "start"]
