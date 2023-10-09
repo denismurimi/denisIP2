@@ -2,17 +2,17 @@
 FROM node:alpine3.18
 
 # Set the working directory in the container
-RUN mkdir -p /srv/app/admin-client
-WORKDIR /srv/app/admin-client
+RUN mkdir -p /application/client
+WORKDIR /application/client
 
 # Copy the package.json files to the working directory
-COPY package*.json /srv/app/admin-client
+COPY package*.json /application/client
 
 # Install the application dependencies
 RUN npm install --silent
 
 # Copy the remaining application files to the working directory
-COPY . /srv/app/admin-client
+COPY . /application/client
 
 # Command to run the app when the container starts
 CMD ["npm", "start"]

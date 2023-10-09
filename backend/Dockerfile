@@ -1,17 +1,18 @@
-# Use the official Node.js Alpine base image
+#Using a node alpine image
 FROM node:alpine3.18
 
-# Set the working directory in the container
-WORKDIR /srv/app/admin-server
+# setting the working directory
+RUN mkdir -p /application/server
+WORKDIR /application/server
 
-# Copy the package.json and package-lock.json (if they exist) files to the working directory
-COPY package*.json ./
+# Copying the package.json file to the working directory
+COPY package*.json /application/server
 
-# Install the application dependencies
+# Installing the dependencies
 RUN npm install --silent
 
-# Copy the remaining application files to the working directory
-COPY . .
+# Copying the resr of the files to the working directory
+COPY . /application/server
 
-# Command to run the application when the container starts
+# Running the app
 CMD ["npm", "start"]
