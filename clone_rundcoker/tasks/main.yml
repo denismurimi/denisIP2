@@ -1,0 +1,17 @@
+# tasks file for clone_rundcoker
+- name: Clone Yolo from GitHub
+  git:
+        repo: https://github.com/denismurimi/denisIP2.git
+        dest: /home/denismoringa/ip3
+        update: yes
+
+- name: Set the working directory to the cloned folder
+  command: cd /home/denismoringa/ip3
+  args:
+        chdir: /home/denismoringa/ip3
+        creates: /home/denismoringa/ip3
+
+- name: Run Docker Compose
+  command: docker-compose up -d
+  args:
+    chdir: /home/denismoringa/ip3 # This Changes working directory to the cloned folder
